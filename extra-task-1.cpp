@@ -1,3 +1,5 @@
+#include <cmath>
+
 double seconds_difference(double time_1, double time_2)
 {
     return time_2 - time_1;
@@ -64,6 +66,9 @@ double to_float_hours(int hours, int minutes, int seconds)
 
 double to_24_hour_clock(double hours)
 {
+    double intPart = 0;
+    double fractionalPart = modf(hours, &intPart);
+    return intPart + fractionalPart;
     /*
         hours is a number of hours since midnight. Return the
         hour as seen on a 24-hour clock.
